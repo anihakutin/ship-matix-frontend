@@ -1,20 +1,20 @@
 class CreateOrderTable < ActiveRecord::Migration[6.0]
   def change
     create_table :orders do |t|
-        t.integer :orderId
-        t.string  :orderNumber
-        t.integer :customerId
-        t.date    :orderDate
-        t.date    :createDate
-        t.date    :shipByDate
-        t.string  :sourceOrderStatus
-        t.string  :orderStatus
-        t.jsonb   :orderInfo
+        t.integer :order_id
+        t.string  :order_number
+        t.integer :user_id
+        t.date    :order_date
+        t.date    :create_date
+        t.date    :ship_by_date
+        t.string  :source_order_status
+        t.string  :order_status
+        t.jsonb   :order_info
     end
 
-    add_index :orders, :orderId, unique: true
-    add_index :orders, :orderNumber
-    add_index :orders, :customerId
-    add_index :orders, :orderInfo
+    add_index :orders, :order_id, unique: true
+    add_index :orders, :order_number
+    add_index :orders, :user_id
+    add_index :orders, :order_info
   end
 end

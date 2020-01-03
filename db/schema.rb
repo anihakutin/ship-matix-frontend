@@ -16,19 +16,19 @@ ActiveRecord::Schema.define(version: 2020_01_03_001638) do
   enable_extension "plpgsql"
 
   create_table "orders", force: :cascade do |t|
-    t.integer "orderId"
-    t.string "orderNumber"
-    t.integer "customerId"
-    t.date "orderDate"
-    t.date "createDate"
-    t.date "shipByDate"
-    t.string "sourceOrderStatus"
-    t.string "orderStatus"
-    t.jsonb "orderInfo"
-    t.index ["customerId"], name: "index_orders_on_customerId"
-    t.index ["orderId"], name: "index_orders_on_orderId", unique: true
-    t.index ["orderInfo"], name: "index_orders_on_orderInfo"
-    t.index ["orderNumber"], name: "index_orders_on_orderNumber"
+    t.integer "order_id"
+    t.string "order_number"
+    t.integer "user_id"
+    t.date "order_date"
+    t.date "create_date"
+    t.date "ship_by_date"
+    t.string "source_order_status"
+    t.string "order_status"
+    t.jsonb "order_info"
+    t.index ["order_id"], name: "index_orders_on_order_id", unique: true
+    t.index ["order_info"], name: "index_orders_on_order_info"
+    t.index ["order_number"], name: "index_orders_on_order_number"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
