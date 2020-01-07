@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
+  skip_before_action :verify_authenticity_token
   before_action :require_login
 
-  def encode_token
-    SECRET_KEY = Rails.application.secrets.secret_key_base.to_s
-    JWT.encode(payload, SECRET_KEY)
+  def encode_token(payload)
+    my_secret = Rails.application.secrets.secret_key_base.to_s
+    JWT.encode(payload, my_secret)
   end
 
   def auth_header
@@ -12,17 +13,19 @@ class ApplicationController < ActionController::Base
 
   def decoded_token
     if auth_header
-      SECRET_KEY = Rails.application.secrets.secret_key_base.to_s
+      my_secret = Rails.application.secrets.secret_key_base.to_s
       token = auth_header.split(' ')[1]
       begin
-        JWT.decode(token, SECRET_KEY, true, algorithm: 'HS256')
+        JWT.decode(token, my_secret, true, algorithm: 'HS256')
       rescue JWT::DecodeError
         []
+      end
+    end
   end
 
   def session_user
     decoded_hash = decoded_token
-    if !decoded_hash.empty?
+    if !decoded_hash.nil?
       user_id = decoded_hash[0]['user_id']
       @user = User.find_by(id: user_id)
     else
