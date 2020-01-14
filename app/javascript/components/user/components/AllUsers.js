@@ -1,35 +1,52 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { authedUser } from 'components/authActions.js';
 
-export default class AllUsers extends Component{
-  state = {
-    user: "",
-  }
+class AllUsers extends Component{
 
   componentDidMount() {
-    fetch('/api/users', {
-      headers: {
-        Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.qeMrsz-8ADpMzbbmq44lAv1yX930WQfHrtn-efk97U0"
-        // Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.j3aYiPd_jGAFftPF6mxAqz6cv3vVApWgLVCsEDMuZ7M"
-      }
-      })
-    .then(response => response.json())
-    .then(json => this.setState({ user: json } ))
+    this.props.authedUser()
   }
 
   renderUser() {
+    const { name, email } = this.props.user
     return(
       <div>
-        <p>{this.state.user.name}</p>
-        <p>{this.state.user.email}</p>
+        <p>{name}</p>
+        <p>{email}</p>
       </div>
     )
   }
 
   render() {
-    return(
-      <div>
-        {this.renderUser()}
-      </div>
+    const currentUser = this.props.currentUser
+    console.log(this.props.state)
+    if (currentUser) {
+      return (
+        <div>
+          {this.renderUser()}
+        </div>
       )
+    }
+    return (
+      <div>
+        <h2>{this.props.error}</h2>
+        {/* <Redirect to='/users/login' /> */}
+      </div>
+    )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    state: state
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    authedUser: () => { dispatch(authedUser()) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatch)(AllUsers)
