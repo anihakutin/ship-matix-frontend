@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { loginUser } from 'components/authActions.js';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  useHistory,
+  useLocation
+} from "react-router-dom";
 
-export default class LoginForm extends Component{
+
+class LoginForm extends Component{
   constructor() {
     super()
 
     this.state = {
-      l_email: "",
-      l_password: ""
+      login_email: "",
+      login_password: "",
+      message: ""
     }
   }
 
@@ -17,9 +30,17 @@ export default class LoginForm extends Component{
   }
 
   OnSubmit = e => {
+    const { email, password } = this.state
     e.preventDefault()
-    console.log(this.state)
-    //dispatch login action
+    this.props.loginUser(this.state.login_email, this.state.login_password)
+  }
+
+  LoadingMsg = () => {
+    if (this.props.requesting) {
+      return "Logging In"
+      } else {
+        return ""
+      }
   }
 
   formStyle = {
@@ -28,16 +49,38 @@ export default class LoginForm extends Component{
   };
 
   render() {
+    if (this.props.loggedIn) {
+      return <Redirect to="/users" />
+    }
     return(
       <div>
         <form onSubmit={this.OnSubmit} style={this.formStyle}>
           <label>Email:</label>
-          <input onChange={e => this.OnTextChange(e)} value={this.state.l_email} id="l_email" name="l_email" type="email" />
+          <input onChange={e => this.OnTextChange(e)} value={this.state.login_email} id="login_email" name="login_email" type="email" />
           <label>Password:</label>
-          <input onChange={e => this.OnTextChange(e)} value={this.state.l_password} id="l_password" name="l_password" type="password" />
+          <input onChange={e => this.OnTextChange(e)} value={this.state.login_password} id="login_password" name="login_password" type="password" />
           <button type="submit">Login</button>
         </form>
+        <p>Status: {this.LoadingMsg()}</p>
+        <p>Result: {this.props.messages.error || this.props.messages.success}</p>
       </div>
       )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    user: state.auth.currentUser,
+    messages: state.auth,
+    requesting: state.auth.requesting,
+    loggedIn: state.auth.loggedIn
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    loginUser: (email, password) => { dispatch(loginUser(email, password)) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatch)(LoginForm)
