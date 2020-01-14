@@ -12,10 +12,14 @@ class API::UsersController < ApplicationController
     if user.valid?
       payload = { user_id: user.id }
       token = encode_token(payload)
-      render json: { user: UserSerializer.new(user).as_json, jwt: token, success: "Welcome, #{user.name}" } 
+      render json: { user: UserSerializer.new(user).as_json, jwt: token, success: "Welcome, #{user.name}" }
     else
       render json: { failure: user.errors.messages }, status: :not_acceptable
     end
+  end
+
+  def update_shipping_rules
+    
   end
 
   private
