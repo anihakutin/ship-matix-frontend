@@ -6,7 +6,8 @@ class API::AuthController < ApplicationController
       if user && user.authenticate(params[:password])
         payload = { user_id: user.id }
         token = encode_token(payload)
-        render json: { user: user, jwt: token, success: "Welcome Back, #{user.name}" }
+        UserSerializer.new(user).as_json
+        render json: { user: UserSerializer.new(user).as_json, jwt: token, success: "Welcome Back, #{user.name}" }
       else
         render json: { failure: "Log In Failed! Username Or Password Invalid"}
       end
@@ -14,13 +15,13 @@ class API::AuthController < ApplicationController
 
     def auto_login
       if session_user
-        render json: session_user
+        render json: { user: UserSerializer.new(session_user).as_json, success: "You are logged in." }
       else
-        render json: { errors: "No User Logged In."}
+        render json: { failure: "No User Logged In."}
       end
     end
 
     def user_is_authed
-      render json: { message: "You are authorized."}
+      render json: { success: "You are authorized."}
     end
   end

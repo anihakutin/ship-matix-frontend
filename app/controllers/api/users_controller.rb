@@ -12,15 +12,15 @@ class API::UsersController < ApplicationController
     if user.valid?
       payload = { user_id: user.id }
       token = encode_token(payload)
-      render json: { user: user, jwt: token}
+      render json: { user: UserSerializer.new(user).as_json, jwt: token, success: "Welcome, #{user.name}" } 
     else
-      render json: { errors: user.errors.messages }, status: :not_acceptable
+      render json: { failure: user.errors.messages }, status: :not_acceptable
     end
   end
 
   private
 
   def user_params
-    params.permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password)
   end
 end
