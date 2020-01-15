@@ -25,7 +25,9 @@ gem 'redis', '~> 4.0'
 gem 'bcrypt', '~> 3.1.7'
 # Use jwt for JWT authentication
 gem 'jwt'
-
+# Use Faraday for external api requests
+gem 'faraday'
+# Run background async workes with sidekiq(on redis)
 gem 'sidekiq'
 
 # Use Active Storage variant
