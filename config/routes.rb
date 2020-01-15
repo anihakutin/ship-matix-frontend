@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: 'json' } do
       #user routes
       resources :users, only: [:index, :create]
-      post "/users/shipping-rules", to "users#update_shipping_rules"
+      post "/users/shipping-rules", to: "users#update_shipping_rules"
 
       #auth routes
       post "/login", to: "auth#login"
