@@ -1,4 +1,5 @@
 class API::UsersController < ApplicationController
+  include Userable
   skip_before_action :require_login, only: [:create]
 
   def index
@@ -16,10 +17,6 @@ class API::UsersController < ApplicationController
     else
       render json: { failure: user.errors.messages }, status: :not_acceptable
     end
-  end
-
-  def update_shipping_rules
-    
   end
 
   private
