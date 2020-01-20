@@ -2,15 +2,12 @@ module Userable
   extend ActiveSupport::Concern
 
   def update_shipping_rules
-    user = session_user
-    begin
-    user.shipping_rules = shipping_settings_params
-  rescue_from NoMethodError do |exception|
-    if user.save
-      render json: { success: "You hit update_shipping_rules sucessfully!", user: user}
-    end
-  end
-  rescue
+    # byebug
+    @user = session_user
+    @user.shipping_rules = shipping_settings_params
+    if @user.save
+      render json: { success: "Shipping rules updated sucessfully", user: UserSerializer.new(@user).as_json}
+    else
       render json: { error: "Update Failed" }, status: 400
     end
   end

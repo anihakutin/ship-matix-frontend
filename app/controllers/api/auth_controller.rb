@@ -6,7 +6,7 @@ class API::AuthController < ApplicationController
       if user && user.authenticate(params[:password])
         payload = { user_id: user.id }
         token = encode_token(payload)
-        UserSerializer.new(user).as_json
+        # UserSerializer.new(user).as_json
         render json: { user: UserSerializer.new(user).as_json, jwt: token, success: "Welcome Back, #{user.name}" }
       else
         render json: { failure: "Log In Failed! Username Or Password Invalid"}

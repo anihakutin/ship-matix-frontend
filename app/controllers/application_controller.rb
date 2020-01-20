@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
       begin
         JWT.decode(token, my_secret, true, algorithm: 'HS256')
       rescue JWT::DecodeError
-        []
+        [] #Fixme render login error if user messes with token, currently throws nill exception
       end
     end
   end
