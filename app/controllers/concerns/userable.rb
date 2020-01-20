@@ -3,29 +3,29 @@ module Userable
 
   def update_shipping_rules
     user = session_user
+    begin
     user.shipping_rules = shipping_settings_params
+  rescue_from NoMethodError do |exception|
     if user.save
       render json: { message: "You hit update_shipping_rules sucessfully!", user: user.shipping_rules}
-    elsif
-      render json: { message: "Shipping setting update failed :(...", error: user.errors }
+    end
+  end
+  rescue
+      render json: { error: "Update Failed" }, status: 400
     end
   end
 
-
-
-
-
   def shipping_settings_params
-    params.require(:shipping_settings)
+    params
+    .require(:shipping_settings)
+    .permit(:last_update, :rules =>
+      [:carrier_id, :carrier_code, :service_code, :service_name,
+        :max_weight, :domestic, :international, :standard,
+        :expedited, :next_day, :second_day])
   end
-  # def shipping_settings_params
-  #   params.require(:ship_settings).permit(
-  #     :carrier_id, :carrier_code, :service_code, :service_name, :max_weight,
-  #     :domestic, :international,
-  #     :standard, :expedited, :next_day, :second_day
-  #   )
-  # end
-  #
+end
+
+
   # shipping_settings = [
   #     {"carrier_id": "se-123890", "carrier_code": "stamps_com", "service_code": "usps_priority_mail", "service_name": "USPS Priority Mail", "max_weight": "", "domestic": "true", "international": "false", "standard": "True", "expedited": "True", "next_day": "False", "second_day": "False"},
   #     {"carrier_id": "se-123890", "carrier_code": "stamps_com", "service_code": "usps_first_class_mail", "service_name": "USPS First Class Mail", "max_weight": "", "domestic": "true", "international": "false", "standard": "True", "expedited": "True", "next_day": "False", "second_day": "False"},
@@ -93,4 +93,3 @@ module Userable
   #     "carrier_friendly_name": "Stamps.com"
   #   }
   # ]
-end
