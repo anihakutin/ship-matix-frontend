@@ -7,7 +7,7 @@ module Userable
     user.shipping_rules = shipping_settings_params
   rescue_from NoMethodError do |exception|
     if user.save
-      render json: { message: "You hit update_shipping_rules sucessfully!", user: user.shipping_rules}
+      render json: { success: "You hit update_shipping_rules sucessfully!", user: user}
     end
   end
   rescue
