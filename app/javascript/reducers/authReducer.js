@@ -63,13 +63,22 @@ const authReducer =
       error: "",
       success: action.success
     }
-    
+
     //User settings reducers
     case "START_REQUEST":
       return {
         ...state,
         currentUser: state.currentUser,
         requesting: true
+      }
+
+    case "REQUEST_FAILED":
+      return {
+        ...state,
+        currentUser: state.currentUser,
+        requesting: false,
+        loggedIn: state.loggedIn,
+        error: action.error
       }
 
     case "UPDATE_SHIPPING_RULES":

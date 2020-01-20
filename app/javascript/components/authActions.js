@@ -71,3 +71,22 @@ export function logoutUser() {
     return dispatch({ type: 'LOGOUT_USER', success: "User is logged out"})
   }
 }
+
+export function updateShippingRules(newRules) {
+  const token = localStorage.getItem("token");
+  return (dispatch) => {
+    dispatch({ type: 'START_REQUEST' });
+    fetch(`/api/users/shipping-rules`, {
+    method: "POST",
+     headers: {
+       "Content-Type": "application/json",
+       "Accept": "application/json"
+       Authorization: `Bearer ${token}`
+     },
+     body: JSON.stringify({ newRules })
+   })
+   .then(resp => resp.json())
+   .then(data => dispatch({ type: 'UPDATE_SHIPPING_RULES', user: data.user, success: data.success }))
+   .catch(() => dispatch({ type: 'REQUEST_FAILED' }))
+  }
+}
