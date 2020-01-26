@@ -72,7 +72,7 @@ export function logoutUser() {
   }
 }
 
-export function updateShippingRules(newRules) {
+export function updateShippingRules(shipping_settings) {
   const token = localStorage.getItem("token");
   return (dispatch) => {
     dispatch({ type: 'START_REQUEST' });
@@ -83,7 +83,7 @@ export function updateShippingRules(newRules) {
        "Accept": "application/json",
        Authorization: `Bearer ${token}`
      },
-     body: JSON.stringify({ newRules })
+     body: JSON.stringify({ shipping_settings })
    })
    .then(resp => resp.json())
    .then(data => dispatch({ type: 'UPDATE_SHIPPING_RULES', user: data.user, success: data.success }))

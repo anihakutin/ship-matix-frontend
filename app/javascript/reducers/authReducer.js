@@ -1,6 +1,7 @@
 const authReducer =
 (state = {
   currentUser: "",
+  shippingRules: {},
   loggedIn: false,
   requesting: false,
   error: "",
@@ -48,6 +49,7 @@ const authReducer =
       return {
         ...state,
         currentUser: action.user,
+        shippingRules: {},
         requesting: false,
         loggedIn: true,
         error: "",
@@ -69,6 +71,8 @@ const authReducer =
       return {
         ...state,
         currentUser: state.currentUser,
+        error: "",
+        success: "",
         requesting: true
       }
 
@@ -78,13 +82,13 @@ const authReducer =
         currentUser: state.currentUser,
         requesting: false,
         loggedIn: state.loggedIn,
-        error: action.error
+        error: action.error || "Could not save your settings, please check yout internet connection."
       }
 
     case "UPDATE_SHIPPING_RULES":
       return {
       ...state,
-      currentUser: "",
+      currentUser: action.user,
       requesting: false,
       loggedIn: true,
       error: "",
