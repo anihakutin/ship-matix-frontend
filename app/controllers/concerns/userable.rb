@@ -17,7 +17,7 @@ module Userable
     .require(:shipping_settings)
     .permit(:last_update, :rules =>
       [:carrier_id, :carrier_code, :service_code, :service_name,
-        :max_weight, :domestic, :international, :standard,
+        :max_weight, :rate, :domestic, :international, :standard,
         :expedited, :next_day, :second_day])
   end
 end
