@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { Grommet, Box, Grid, Text, Heading } from "grommet";
 
 export default class TitleBar extends Component{
   render() {
     return(
-      <h1>Not very fancy but you may consider me your shiny new home page!(for now...)</h1>
+      <Heading margin="none" level="4">
+        Not very fancy but you may consider me your shiny new home page!(for now...)
+      </Heading>
       )
   }
 }
