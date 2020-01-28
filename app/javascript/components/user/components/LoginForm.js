@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Box, TextInput, MaskedInput, Form, Heading, FormField, Button } from 'grommet';
+import { FormLock, View } from "grommet-icons";
 import { loginUser } from 'components/authActions.js';
 import {
   BrowserRouter as Router,
@@ -52,18 +54,52 @@ class LoginForm extends Component{
     if (this.props.loggedIn) {
       return <Redirect to="/users" />
     }
+    // <FormField name="name" label="Name" />
+    // <Button type="submit" primary label="Submit" />
+    // <FormField onChange={e => this.OnTextChange(e)} value={this.state.login_email} id="login_email" name="login_email" type="email" label="Email" />
     return(
-      <div>
-        <form onSubmit={this.OnSubmit} style={this.formStyle}>
-          <label>Email:</label>
-          <input onChange={e => this.OnTextChange(e)} value={this.state.login_email} id="login_email" name="login_email" type="email" />
-          <label>Password:</label>
-          <input onChange={e => this.OnTextChange(e)} value={this.state.login_password} id="login_password" name="login_password" type="password" />
-          <button type="submit">Login</button>
-        </form>
+      <Box alignSelf="center" justify="start">
+
+        <Form onSubmit={this.OnSubmit} style={this.formStyle} >
+          <Heading level="3">Sign In Below</Heading>
+          <FormField label="Password">
+            <MaskedInput
+              mask={[
+                {
+                  regexp: /^[\w\-_.]+$/,
+                  placeholder: "example"
+                },
+                { fixed: "@" },
+                {
+                  regexp: /^[\w]+$/,
+                  placeholder: "my"
+                },
+                { fixed: "." },
+                {
+                  regexp: /^[\w]+$/,
+                  placeholder: "com"
+                }
+              ]}
+              id="login_email"
+              name="login_email"
+              value={this.state.login_email}
+              onChange={e => this.OnTextChange(e)}
+              required={true}
+            />
+          </FormField>
+          <FormField
+            onChange={e => this.OnTextChange(e)}
+            value={this.state.login_password}
+            id="login_password"
+            name="login_password"
+            label="Password"
+            type="password"
+          />
+          <Button type="submit" icon={< FormLock />} label="Login"/>
+        </Form>
         <p>Status: {this.LoadingMsg()}</p>
         <p>Result: {this.props.messages.error || this.props.messages.success}</p>
-      </div>
+      </Box>
       )
   }
 }
