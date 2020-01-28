@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
+import { Main, Box, Grid } from 'grommet';
 import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
@@ -24,18 +24,46 @@ class UserContainer extends Component{
 
   render() {
     const currentUser = this.props.user
-    if (!currentUser) {
+    if (!this.props.loggedIn) {
       return <Redirect to="/users/login"/>
       }
     return(
-      <div>
-        <UserInfo user={this.props.user} authedUser={this.props.authedUser}/>
-        <ShippingRules
-          user={this.props.user}
-          shippingRules={this.props.shippingRules}
-          updateShippingRules={this.props.updateShippingRules}
-        />
-      </div>
+      <Main>
+        <Box pad="medium">
+          <Grid
+            areas={[
+              { name: 'left-side', start: [0, 0], end: [0, 0]},
+              { name: 'main', start: [1, 0], end: [1, 0]}
+              ]}
+            columns={['small', 'auto']}
+            rows={['auto']}
+            gap="small"
+            >
+            <Box
+              gridArea="left-side"
+              background="light-1"
+              pad="medium"
+            >
+              <UserInfo user={this.props.user} authedUser={this.props.authedUser}/>
+            </Box>
+            <Box
+              gridArea="main"
+              direction="row"
+              alignSelf="start"
+              alignContent="stretch"
+              background="light-1"
+              pad="medium"
+              flex="true"
+            >
+              <ShippingRules
+                user={this.props.user}
+                shippingRules={this.props.shippingRules}
+                updateShippingRules={this.props.updateShippingRules}
+              />
+            </Box>
+          </Grid>
+        </Box>
+      </Main>
     )
   }
 }
@@ -43,7 +71,8 @@ class UserContainer extends Component{
 const mapStateToProps = state => {
   return {
       user: state.auth.currentUser,
-      shippingRules: state.auth.currentUser.shipping_rules
+      shippingRules: state.auth.currentUser.shipping_rules,
+      loggedIn: state.auth.loggedIn
   }
 }
 
