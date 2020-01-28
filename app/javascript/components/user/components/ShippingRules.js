@@ -3,11 +3,7 @@ import ReactDOM from 'react-dom';
 import ReactDataGrid from 'react-data-grid';
 import { Box, Grid, Button } from 'grommet';
 import { connect } from 'react-redux';
-// const ReactDataGrid = require("react-data-grid");
-
 import { columns } from './ShippingSettings.js';
-// import { Editors } from 'react-data-grid-addons';
-
 
 class ShippingRules extends Component {
   constructor() {
@@ -49,8 +45,7 @@ class ShippingRules extends Component {
           textAlign: "center",
           backgroundColor: "#ddd",
           padding: "100px"
-      }}
-            >
+      }}>
       <h3>{message}</h3>
     </div>);
   };
@@ -74,11 +69,10 @@ class ShippingRules extends Component {
 
   render() {
     const {rows} = this.state
-    // <p>{this.LoadingMsg()}</p>
-    // <p>Result: {this.props.messages.error || this.props.messages.success}</p>
+
     return (
       <Box
-        flex="true"
+        flex={true}
       >
         <p>Set you shipping rules:</p>
         <ReactDataGrid

@@ -10,12 +10,9 @@ import {
   useHistory,
   useLocation
 } from "react-router-dom";
-
-import { authedUser } from 'components/authActions.js';
+import { authedUser, updateShippingRules } from 'components/authActions.js';
 import UserInfo from './components/UserInfo.js';
 import ShippingRules from './components/ShippingRules.js';
-import { updateShippingRules } from 'components/authActions.js';
-// import AllUsers from './components/AllUsers.js';
 
 class UserContainer extends Component{
   componentDidMount() {
@@ -44,7 +41,10 @@ class UserContainer extends Component{
               background="light-1"
               pad="medium"
             >
-              <UserInfo user={this.props.user} authedUser={this.props.authedUser}/>
+              <UserInfo
+                user={this.props.user}
+                authedUser={this.props.authedUser}
+                />
             </Box>
             <Box
               gridArea="main"
@@ -53,7 +53,6 @@ class UserContainer extends Component{
               alignContent="stretch"
               background="light-1"
               pad="medium"
-              flex="true"
             >
               <ShippingRules
                 user={this.props.user}
@@ -82,6 +81,5 @@ const mapDispatch = dispatch => {
     authedUser: () => { dispatch(authedUser()) }
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatch)(UserContainer);
