@@ -2,15 +2,13 @@ import React from 'react';
 import { Home, Notification, Dashboard, Login } from "grommet-icons";
 import { Grommet, RoutedAnchor, Anchor, Header, Menu, Box, Nav, Button, Grid, Text, Heading } from "grommet";
 import { grommet } from "grommet/themes";
-import { RouterAnchor } from "./user/components/links";
-
+import { RouterAnchor } from "./user/components/Links";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-
 import HomeContainer from './home/HomeContainer';
 import UserContainer from './user/UserContainer';
 import LoginContainer from './user/LoginContainer';
