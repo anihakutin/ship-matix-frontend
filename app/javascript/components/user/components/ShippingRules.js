@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ReactDataGrid from 'react-data-grid';
+import { Box, Grid, Button } from 'grommet';
 import { connect } from 'react-redux';
 // const ReactDataGrid = require("react-data-grid");
 
@@ -73,25 +74,26 @@ class ShippingRules extends Component {
 
   render() {
     const {rows} = this.state
-
+    // <p>{this.LoadingMsg()}</p>
+    // <p>Result: {this.props.messages.error || this.props.messages.success}</p>
     return (
-      <div>
+      <Box
+        flex="true"
+      >
         <p>Set you shipping rules:</p>
-
         <ReactDataGrid
           columns={columns}
           rowGetter={i => rows[i]}
           rowsCount={this.rowsCount()}
-          minHeight={100}
+          minHeight={150}
           onGridRowsUpdated={this.onGridRowsUpdated}
           enableCellSelect={true}
           emptyRowsView={this.EmptyRowsView}
         />
         <br></br>
-        <p>Status: {this.LoadingMsg()}</p>
-        <p>Result: {this.props.messages.error || this.props.messages.success}</p>
-        <button onClick={this.onButtonSaveClick} name="save_shipping_settings">Save Settings</button>
-      </div>
+        <Button onClick={this.onButtonSaveClick} name="save_shipping_settings" label="Save Settings"/>
+        <p>{this.props.messages.error || this.props.messages.success}</p>
+      </Box>
     )
   }
 }
