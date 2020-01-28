@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Box, TextInput, MaskedInput, Form, Heading, FormField, Button } from 'grommet';
 import { FormLock } from "grommet-icons";
-import { loginUser } from 'components/authActions.js';
 
 class LoginForm extends Component{
   constructor() {
@@ -73,10 +71,4 @@ class LoginForm extends Component{
   }
 }
 
-const mapDispatch = dispatch => {
-  return {
-    loginUser: (email, password) => { dispatch(loginUser(email, password)) }
-  }
-}
-
-export default connect(null, mapDispatch)(LoginForm)
+export default LoginForm;

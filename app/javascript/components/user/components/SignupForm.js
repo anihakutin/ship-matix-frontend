@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { createUser } from 'components/authActions.js';
+// import { connect } from 'react-redux';
 import { Box, TextInput, MaskedInput, Form, Heading, FormField, Button } from 'grommet';
 import { Launch } from "grommet-icons";
 
@@ -70,10 +69,10 @@ class SignupForm extends Component{
   }
 }
 
-const mapDispatch = dispatch => {
-  return {
-    createUser: (name, email, password) => { dispatch(createUser(name, email, password)) }
-  }
-}
+// const mapDispatch = dispatch => {
+//   return {
+//     createUser: (name, email, password) => { dispatch(createUser(name, email, password)) }
+//   }
+// }
 
-export default connect(null, mapDispatch)(SignupForm)
+export default SignupForm;

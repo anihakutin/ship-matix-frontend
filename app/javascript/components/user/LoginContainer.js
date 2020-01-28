@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import LoginForm from './components/LoginForm.js';
 import SignupForm from './components/SignupForm.js';
+import { loginUser, createUser } from 'components/authActions.js';
 
 class LoginContainer extends Component{
   constructor() {
@@ -42,8 +43,8 @@ class LoginContainer extends Component{
             {this.props.messages.error || this.props.messages.success}
           </p>
           <Box direction="row" pad="medium" align="center"  justify="center" gap="large">
-            <LoginForm />
-            <SignupForm />
+            <LoginForm loginUser={this.props.loginUser}/>
+            <SignupForm createUser={this.props.createUser}/>
           </Box>
         </Box>
       </Main>
@@ -60,4 +61,11 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(LoginContainer)
+const mapDispatch = dispatch => {
+  return {
+    loginUser: (email, password) => { dispatch(loginUser(email, password)) },
+    createUser: (name, email, password) => { dispatch(createUser(name, email, password)) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatch)(LoginContainer)
