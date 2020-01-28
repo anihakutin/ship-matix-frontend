@@ -15,7 +15,8 @@ class API::UsersController < ApplicationController
       token = encode_token(payload)
       render json: { user: UserSerializer.new(user).as_json, jwt: token, success: "Welcome, #{user.name}" }
     else
-      render json: { failure: user.errors.messages }, status: :not_acceptable
+      error = user.errors.map{ |attr, msg| attr.to_s.capitalize + ": " + msg + ". " }
+      render json: { failure: error }
     end
   end
 
