@@ -62,7 +62,7 @@ class LoginForm extends Component{
 
         <Form onSubmit={this.OnSubmit} style={this.formStyle} >
           <Heading level="3">Sign In Below</Heading>
-          <FormField label="Password">
+          <FormField label="Email" >
             <MaskedInput
               mask={[
                 {
@@ -94,6 +94,7 @@ class LoginForm extends Component{
             name="login_password"
             label="Password"
             type="password"
+            required={true}
           />
           <Button type="submit" icon={< FormLock />} label="Login"/>
         </Form>
