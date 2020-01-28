@@ -30,7 +30,7 @@ class LoginContainer extends Component{
         return ""
       }
   }
-  //Status: {this.LoadingMsg()}
+
   render() {
     if (this.props.loggedIn) {
       return <Redirect to="/users" />
