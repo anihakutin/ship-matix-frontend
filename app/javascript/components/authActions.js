@@ -60,7 +60,7 @@ export function authedUser() {
      .catch(() => dispatch({ type: 'LOGIN_FAILED' }))
     }
     else {
-      return dispatch({ type: 'LOGIN_FAILED', error: "User is not logged in" })
+      return dispatch({ type: 'LOGIN_FAILED', error: "You need to log in to continue." })
     }
   }
 }
@@ -68,7 +68,7 @@ export function authedUser() {
 export function logoutUser() {
   localStorage.removeItem("token")
   return (dispatch) => {
-    return dispatch({ type: 'LOGOUT_USER', success: "User is logged out"})
+    return dispatch({ type: 'LOGOUT_USER', success: "You are now logged out."})
   }
 }
 

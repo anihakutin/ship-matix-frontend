@@ -10,7 +10,7 @@ import {
   useHistory,
   useLocation
 } from "react-router-dom";
-import { authedUser, updateShippingRules } from 'components/authActions.js';
+import { authedUser, logoutUser, updateShippingRules } from 'components/authActions.js';
 import UserInfo from './components/UserInfo.js';
 import ShippingRules from './components/ShippingRules.js';
 
@@ -44,6 +44,7 @@ class UserContainer extends Component{
               <UserInfo
                 user={this.props.user}
                 authedUser={this.props.authedUser}
+                logoutUser={this.props.logoutUser}
                 />
             </Box>
             <Box
@@ -78,7 +79,8 @@ const mapStateToProps = state => {
 const mapDispatch = dispatch => {
   return {
     updateShippingRules: (shipping_settings) => { dispatch(updateShippingRules(shipping_settings)) },
-    authedUser: () => { dispatch(authedUser()) }
+    authedUser: () => { dispatch(authedUser()) },
+    logoutUser: () => { dispatch(logoutUser()) }
   }
 }
 
