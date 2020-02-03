@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import { Main, Box, Grid } from 'grommet';
 import { connect } from 'react-redux';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useHistory,
-  useLocation
-} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { authedUser, logoutUser, updateShippingRules } from 'components/authActions.js';
 import UserInfo from './components/UserInfo.js';
 import ShippingRules from './components/ShippingRules.js';
@@ -20,7 +12,6 @@ class UserContainer extends Component{
   }
 
   render() {
-    const currentUser = this.props.user
     if (!this.props.loggedIn) {
       return <Redirect to="/users/login"/>
       }
