@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Main, Box } from "grommet";
+import { Main, Box, Tabs, Tab } from "grommet";
 import {
   BrowserRouter as Router,
   Switch,
@@ -38,13 +38,19 @@ class LoginContainer extends Component{
 
     return(
       <Main>
-        <Box direction="column" pad="medium" align="center" justify="center">
+        <Box direction="column" pad="medium" alignSelf="center" align="center" justify="center">
           <p>
             {this.props.messages.error || this.props.messages.success}
           </p>
-          <Box direction="row" pad="medium" align="center"  justify="center" gap="large">
-            <LoginForm loginUser={this.props.loginUser}/>
-            <SignupForm createUser={this.props.createUser}/>
+          <Box direction="column" pad="medium" alignSelf="center" justify="start" gap="small">
+            <Tabs>
+              <Tab title="Login">
+                <LoginForm loginUser={this.props.loginUser}/>
+              </Tab>
+              <Tab title="Sign Up">
+                <SignupForm createUser={this.props.createUser}/>
+              </Tab>
+            </Tabs>
           </Box>
         </Box>
       </Main>
