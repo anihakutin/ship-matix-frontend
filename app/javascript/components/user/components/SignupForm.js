@@ -29,9 +29,9 @@ class SignupForm extends Component{
 
   render() {
     return(
-      <Box alignSelf="start" justify="start">
+      <Box alignSelf="center" alignContent="center" justify="center">
+        <Heading alignSelf="center" level="3"> Sign Up Below </Heading>
         <Form onSubmit={this.OnSubmit} >
-          <Heading level="3">Sign Up Below</Heading>
           <FormField label="Name">
             <TextInput
               onChange={e => this.OnTextChange(e)}
@@ -62,7 +62,9 @@ class SignupForm extends Component{
               required={true}
             />
           </FormField>
-          <Button type="submit" icon={< Launch />} label="Signup" />
+          <Box pad="small">
+            <Button alignSelf="center" reverse="true" type="submit" icon={< Launch />} label="Signup" />
+          </Box>
         </Form>
       </Box>
       )

@@ -27,9 +27,9 @@ class LoginForm extends Component{
 
   render() {
     return(
-      <Box alignSelf="start" justify="start">
-        <Form onSubmit={this.OnSubmit} >
-          <Heading level="3">Sign In Below</Heading>
+      <Box alignSelf="center" alignContent="center" justify="center">
+        <Heading alignSelf="center" level="3">Sign In Below</Heading>
+        <Form onSubmit={this.OnSubmit} > 
           <FormField label="Email" >
             <MaskedInput
               mask={[
@@ -64,7 +64,9 @@ class LoginForm extends Component{
             type="password"
             required={true}
           />
-          <Button type="submit" icon={< FormLock />} label="Login"/>
+          <Box pad="small">
+              <Button alignSelf="center" reverse="true" align type="submit" icon={< FormLock />} label="Login"/>
+          </Box>
         </Form>
       </Box>
       )
