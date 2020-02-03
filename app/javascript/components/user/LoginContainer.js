@@ -33,7 +33,7 @@ class LoginContainer extends Component{
 
   render() {
     if (this.props.loggedIn) {
-      return <Redirect to="/users" />
+      return <Redirect to="/users/orders" />
     }
 
     return(
