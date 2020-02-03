@@ -5,7 +5,7 @@ export default class SectionTimeSavings extends Component{
   render() {
     return(
       <Box alignSelf="center" align="center" margin="small">
-        <Heading level="3">Time Is Your Most Valuable Asset</Heading>
+        <Heading level="4">Save Valuable Employee Time. Increase Productivity.</Heading>
         <Clock type="digital" />
       </Box>
     )
