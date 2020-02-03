@@ -65,7 +65,7 @@ class LoginForm extends Component{
             required={true}
           />
           <Box pad="small">
-              <Button alignSelf="center" reverse="true" align type="submit" icon={< FormLock />} label="Login"/>
+              <Button alignSelf="center" reverse={true} type="submit" icon={< FormLock />} label="Login"/>
           </Box>
         </Form>
       </Box>

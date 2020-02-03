@@ -63,7 +63,7 @@ class SignupForm extends Component{
             />
           </FormField>
           <Box pad="small">
-            <Button alignSelf="center" reverse="true" type="submit" icon={< Launch />} label="Signup" />
+            <Button alignSelf="center" reverse={true} type="submit" icon={< Launch />} label="Signup" />
           </Box>
         </Form>
       </Box>
