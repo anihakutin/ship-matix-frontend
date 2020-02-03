@@ -85,7 +85,7 @@ class ShippingRules extends Component {
           emptyRowsView={this.EmptyRowsView}
         />
         <br></br>
-        <Button onClick={this.onButtonSaveClick} name="save_shipping_settings" label="Save Settings"/>
+        <Button fill={false} alignSelf="start" onClick={this.onButtonSaveClick} name="save_shipping_settings" label="Save Settings"/>
         <p>{this.props.messages.error || this.props.messages.success}</p>
       </Box>
     )

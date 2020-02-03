@@ -31,6 +31,7 @@ class UserContainer extends Component{
               gridArea="left-side"
               background="light-1"
               pad="medium"
+              round="xsmall"
             >
               <UserInfo
                 user={this.props.user}
@@ -45,6 +46,7 @@ class UserContainer extends Component{
               alignContent="stretch"
               background="light-1"
               pad="medium"
+              round="xsmall"
             >
               <ShippingRules
                 user={this.props.user}

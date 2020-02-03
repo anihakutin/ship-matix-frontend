@@ -31,6 +31,7 @@ class OrderContainer extends Component{
                         alignSelf="start"
                         background="light-1"
                         pad="medium"
+                        round="xsmall"
                         >
                             <Heading level="3">Unprocessed</Heading>
                         </Box>
@@ -39,6 +40,7 @@ class OrderContainer extends Component{
                             alignSelf="start"
                             background="light-1"
                             pad="medium"
+                            round="xsmall"
                         >
                             <Heading level="3">Processed</Heading>
                         </Box>
@@ -47,6 +49,7 @@ class OrderContainer extends Component{
                             alignSelf="start"
                             background="light-1"
                             pad="medium"
+                            round="xsmall"
                         >
                             <Heading level="3">Printed</Heading>
                         </Box>
