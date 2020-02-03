@@ -3,6 +3,7 @@ import { Main, Grid, Box, Heading } from 'grommet';
 import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import { authedUser } from 'components/authActions.js';
+import Order from './components/Order.js';
 
 class OrderContainer extends Component{
     componentDidMount() {
@@ -32,8 +33,16 @@ class OrderContainer extends Component{
                         background="light-1"
                         pad="medium"
                         round="xsmall"
+                        overflow="vertical"
                         >
                             <Heading level="3">Unprocessed</Heading>
+                            <Order />
+                            <Order />
+                            <Order />
+                            <Order />
+                            <Order />
+                            <Order />
+                            <Order />
                         </Box>
                         <Box
                             gridArea="section-2"
@@ -41,8 +50,12 @@ class OrderContainer extends Component{
                             background="light-1"
                             pad="medium"
                             round="xsmall"
+                            overflow="vertical"
                         >
                             <Heading level="3">Processed</Heading>
+                            <Order />
+                            <Order />
+                            <Order />
                         </Box>
                         <Box
                             gridArea="section-3"
@@ -50,8 +63,11 @@ class OrderContainer extends Component{
                             background="light-1"
                             pad="medium"
                             round="xsmall"
+                            overflow="vertical"
                         >
                             <Heading level="3">Printed</Heading>
+                            <Order />
+                            <Order />
                         </Box>
                     </Grid>
                 </Box>
