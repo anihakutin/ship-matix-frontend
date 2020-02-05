@@ -19,7 +19,7 @@ class App extends React.Component {
     return (
       <div>
         <Grommet full theme={grommet}>
-          <Main full="true" background="#15202B">
+          <Main fill background="#15202B">
             <Header pad="xxsmall" align="end" alignContent="end" justify="end" >
               <Nav direction="row" gap="small" alignSelf="end" >
                 <RouterAnchor icon={< Home color="light-1"  />} path="/" size="small" ></RouterAnchor>
