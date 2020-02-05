@@ -18,26 +18,28 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <Grommet full theme={grommet}>
-          <Main fill background="#15202B">
-            <Header pad="xxsmall" align="end" alignContent="end" justify="end" >
-              <Nav direction="row" gap="small" alignSelf="end" >
-                <RouterAnchor icon={< Home color="light-1"  />} path="/" size="small" ></RouterAnchor>
-                <RouterAnchor icon={< Login color="accent-4" />} path="/users/login" size="small" ></RouterAnchor>
-                <RouterAnchor icon={< UserSettings color="accent-4" />} path="/users" size="small" ></RouterAnchor>
-                <RouterAnchor icon={< Dashboard color="accent-4" />} path="/users/orders" size="small" ></RouterAnchor>
-              </Nav>
-            </Header>
-            <Switch>
-              <Route exact path="/" component={HomeContainer}/>
-              <Route exact path='/users' component={UserContainer} />
-              <Route exact path='/users/login' component={LoginContainer} />
-              <Route exact path='/users/orders' component={OrderContainer} />
-            </Switch>
-            <Footer pad="small" alignSelf="end" >
-              <Text>Copyright ShipMatix 2020</Text>
-              <Anchor label="About" color="accent-4" path="/about" />
-            </Footer>
+        <Grommet theme={grommet} full>
+          <Main background="#15202B">
+            <Box full>
+              <Header pad="xxsmall" align="end" alignContent="end" justify="end">
+                <Nav direction="row" gap="small" alignSelf="end" >
+                  <RouterAnchor icon={< Home color="light-1"  />} path="/" size="small" ></RouterAnchor>
+                  <RouterAnchor icon={< Login color="accent-4" />} path="/users/login" size="small" ></RouterAnchor>
+                  <RouterAnchor icon={< UserSettings color="accent-4" />} path="/users" size="small" ></RouterAnchor>
+                  <RouterAnchor icon={< Dashboard color="accent-4" />} path="/users/orders" size="small" ></RouterAnchor>
+                </Nav>
+              </Header>
+              <Switch>
+                <Route exact path="/" component={HomeContainer}/>
+                <Route exact path='/users' component={UserContainer} />
+                <Route exact path='/users/login' component={LoginContainer} />
+                <Route exact path='/users/orders' component={OrderContainer} />
+              </Switch>
+              <Footer pad="small" alignSelf="end">
+                <Text>Copyright ShipMatix 2020</Text>
+                <Anchor label="About" color="accent-4" path="/about" />
+              </Footer>
+            </Box>
           </Main>
         </Grommet>
       </div>
