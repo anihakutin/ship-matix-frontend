@@ -10,5 +10,7 @@ Stack:
 
 Relies on the user running an active shipstation and shipengine account.
 
+## Read more at http://heshiebrody.com/shipmatix_-_my_first_saas_app_submitting_my_final_project_part_1
+
 
 
