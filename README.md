@@ -1,24 +1,14 @@
-# README
+# ShipMatix.Com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Shipping tool that downloads and processes orders via the Shipstation API.
 
-Things you may want to cover:
+Stack:
 
-* Ruby version
+* Ruby '2.6.1', Rails 6.0.2.1, React, Postgresql
 
-* System dependencies
+* Redis for sidekiq gem
 
-* Configuration
+Relies on the user running an active shipstation and shipengine account.
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
