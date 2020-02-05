@@ -38,11 +38,11 @@ class LoginContainer extends Component{
 
     return(
       <Main>
-        <Box direction="column" pad="medium" alignSelf="center" align="center" justify="center">
+        <Box direction="column" pad="medium" alignSelf="center" align="center" justify="center" full>
           <p>
             {this.props.messages.error || this.props.messages.success}
           </p>
-          <Box direction="column" pad="medium" alignSelf="center" justify="start" gap="small">
+          <Box direction="column" pad="medium" alignSelf="center" justify="start" gap="small" flex>
             <Tabs>
               <Tab title="Login">
                 <LoginForm loginUser={this.props.loginUser}/>

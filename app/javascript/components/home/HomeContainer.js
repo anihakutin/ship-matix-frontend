@@ -7,8 +7,8 @@ import SectionTimeSavings from './components/SectionTimeSavings.js';
 export default class HomeContainer extends Component{
   render() {
     return(
-      <Main>
-        <Box direction="column" flex pad="small" align="center" alignContents="center" gap="small">
+      <Main flex>
+        <Box direction="column" pad="small" align="center" alignContents="center" gap="small" full>
           <Hero />
           <SectionTimeSavings />
         </Box>
