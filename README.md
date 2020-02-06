@@ -19,7 +19,7 @@ Before you begin, ensure you have met the following requirements:
 
 To install ShipMatix on your local machine, follow these steps:
 
-Clone this repo from githug:
+Clone this repo from github:
 ```
 $ git clone git@github.com:anihakutin/ship-matix.git
 ```
