@@ -17,7 +17,7 @@ Before you begin, ensure you have met the following requirements:
 * Relies on the user running an active shipstation and shipengine account.
 
 ## Using Shipmatix.com
-Automate your shipping at https://drivenwork.com
+Automate your shipping at https://shipmatix.com.
 
 ## Contact
 
