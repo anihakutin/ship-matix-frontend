@@ -8,13 +8,9 @@ Read more at http://heshiebrody.com/shipmatix_-_my_first_saas_app_submitting_my_
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
-* A web browser!
-* Ruby '2.6.1'
-* Rails 6.0.2.1
-* React
-* Postgresql
-* Redis
-* Relies on the user running an active shipstation and shipengine account.
+* A web browser
+* Active shipstation and shipengine account
+* A Printer
 
 ## Using Shipmatix.com
 Automate your shipping at https://shipmatix.com.
