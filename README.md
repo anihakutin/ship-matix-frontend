@@ -15,7 +15,7 @@ Before you begin, ensure you have met the following requirements:
 * React
 * Postgresql
 
-## Installing ShipMatix
+## Installing & Using ShipMatix
 
 To install ShipMatix on your local machine, follow these steps:
 
@@ -35,7 +35,6 @@ Start the react server:
 ```
 $ bin/webpack-dev-server
 ```
-## Using ShipMatix
 Once you've completed the steps above, just open your browser and navigate to ```http://localhost:3000```
 
 ## Contact
